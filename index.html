@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>자연방한의원 성장 프로그램</title>
+    <meta
+      name="description"
+      content="아이의 성장 가능성을 넓히고 성장 장애 요인을 제거하여 완전 성장을 추구하는 자연방한의원 맞춤 한의학 솔루션"
+    >
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main id="page-top" class="page">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-brand">
+          <img src="./images/logo_main.png" alt="자연방한의원" class="hero-logo">
+          <span class="program-label">| 자연방한의원 성장 프로그램</span>
+        </div>
+
+        <div class="hero-copy">
+          <h1 id="hero-title">
+            <span>아이의 성장 가능성,</span>
+            <span class="hero-title-green">지금 확인해야 달라집니다</span>
+          </h1>
+          <p class="hero-description">
+            아이의 성장 가능성을 넓히고, 성장 장애 요인을 제거하여<br>
+            완전 성장을 추구하는 맞춤 한의학 솔루션
+          </p>
+        </div>
+
+        <div class="hero-actions" aria-label="주요 이동">
+          <a href="#consult" class="hero-button hero-button-primary">성장 상담 예약하기</a>
+          <a href="#program-cost" class="hero-button hero-button-secondary">프로그램 비용 확인하기</a>
+        </div>
+      </section>
+
+      <section id="program" class="landing-image-section" aria-label="자연방한의원 성장 프로그램 상세">
+        <span id="program-cost" class="program-cost-anchor" aria-hidden="true"></span>
+        <img
+          src="./images/landing-middle.jpg"
+          alt="성장 고민 문답, 성장 장애 요인 검사, 성장 프로그램 비용, 검사 항목, 녹용 성장 촉진, 치료 안내, 원장 인사"
+          class="landing-image"
+        >
+      </section>
+
+      <section id="consult" class="consult-footer" aria-labelledby="consult-title">
+        <div class="footer-copy">
+          <p class="footer-kicker">아이의 성장,</p>
+          <h2 id="consult-title">지금이 가장 중요합니다</h2>
+          <p class="footer-description">
+            성장 가능 기간과 방해 요인을 확인하고<br>
+            아이에게 맞는 관리 방향을 상담받아보세요.
+          </p>
+        </div>
+
+        <form id="growth-consult-form" class="consult-form" action="#" method="post" data-google-sheet-form>
+          <input type="hidden" name="program" value="성장 프로그램">
+          <input type="hidden" name="source" value="growth_landing">
+
+          <label class="field field-name">
+            <span>이름</span>
+            <input type="text" name="name" placeholder="이름" autocomplete="name" required>
+          </label>
+
+          <fieldset class="field phone-field">
+            <legend>연락처</legend>
+            <div class="phone-row">
+              <input type="text" name="phone-prefix" value="010" class="phone-prefix" aria-label="연락처 앞자리" readonly>
+              <span class="phone-separator" aria-hidden="true"></span>
+              <input type="tel" name="phone-middle" placeholder="연락처" inputmode="numeric" aria-label="연락처 가운데 자리" required>
+              <span class="phone-separator" aria-hidden="true"></span>
+              <input type="tel" name="phone-last" placeholder="연락처" inputmode="numeric" aria-label="연락처 마지막 자리" required>
+            </div>
+          </fieldset>
+
+          <label class="agreement">
+            <input type="checkbox" name="privacy" required>
+            <span>개인정보 수집·이용 동의 <a href="#" aria-label="개인정보 수집 및 이용 동의 보기">[보기]</a></span>
+          </label>
+
+          <button type="submit" class="footer-submit">성장 상담 예약하기</button>
+        </form>
+
+        <div class="footer-info" aria-label="병원 정보">
+          <img src="./images/logo_footer.png" alt="자연방한의원" class="footer-logo">
+          <address>고덕국제대로 94 우성고덕타워2 9층 908호, 909호</address>
+          <span class="footer-divider" aria-hidden="true"></span>
+          <a href="tel:031-665-7778">031-665-7778</a>
+          <span class="footer-divider" aria-hidden="true"></span>
+          <span>평일 10 : 00 - 18 : 00</span>
+          <span class="footer-divider" aria-hidden="true"></span>
+          <span>토요일 09 : 00 - 14 : 00</span>
+          <span class="footer-divider" aria-hidden="true"></span>
+          <span>매주 목요일·일요일 정기 휴무</span>
+        </div>
+      </section>
+      <span id="page-bottom" class="page-bottom-anchor" aria-hidden="true"></span>
+    </main>
+
+    <nav class="quick-nav" aria-label="페이지 빠른 이동">
+      <a href="#page-top" class="quick-nav-link">
+        <img src="./images/top.png" alt="맨 위로">
+      </a>
+      <a href="#page-bottom" class="quick-nav-link">
+        <img src="./images/bottom.png" alt="맨 아래로">
+      </a>
+    </nav>
+    <script src="./submit-to-google-sheet.js" defer></script>
+  </body>
+</html>
