@@ -1,4 +1,4 @@
-const GOOGLE_SCRIPT_URL = "여기에_구글_APPS_SCRIPT_WEB_APP_URL을_넣어주세요";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxcBUMz5MSTKvt-E_if020tdO9PthPbUHdKCP0ZzEPM4ZIAgM8MfyqVQV8jw6idmSTZ/exec";
 
 const consultForm = document.querySelector("[data-google-sheet-form]");
 
