@@ -30,11 +30,13 @@ a {
 }
 
 button,
-input {
+input,
+select {
   font: inherit;
 }
 
-button {
+button,
+select {
   cursor: pointer;
 }
 
@@ -188,7 +190,7 @@ button {
 
 .consult-form {
   position: absolute;
-  top: 59.55%;
+  top: 53%;
   left: 7.41%;
   width: 81.48%;
 }
@@ -213,9 +215,10 @@ button {
 }
 
 .field-name input,
-.phone-row input {
+.phone-row input,
+.time-field select {
   width: 100%;
-  height: min(105px, 9.7222vw);
+  height: min(92px, 8.5185vw);
   border: 0;
   border-radius: min(15px, 1.3889vw);
   background-color: #ffffff;
@@ -237,7 +240,7 @@ button {
 }
 
 .phone-field {
-  margin-top: min(44px, 4.0741vw);
+  margin-top: min(32px, 2.963vw);
 }
 
 .phone-row {
@@ -260,11 +263,33 @@ button {
   background-size: min(23px, 2.1296vw) min(14px, 1.2963vw);
 }
 
+.time-field {
+  margin-top: min(28px, 2.5926vw);
+}
+
+.time-field select {
+  appearance: none;
+  padding: 0 min(43px, 3.9815vw);
+  color: var(--ink);
+  background-image: url("./images/mobile-select-arrow.png");
+  background-position: right min(36px, 3.3333vw) center;
+  background-repeat: no-repeat;
+  background-size: min(23px, 2.1296vw) min(14px, 1.2963vw);
+}
+
+.time-field select:invalid {
+  color: var(--muted);
+}
+
+.time-field option {
+  color: var(--ink);
+}
+
 .agreement {
   display: flex;
   align-items: center;
   gap: min(23px, 2.1296vw);
-  margin-top: min(47px, 4.3519vw);
+  margin-top: min(30px, 2.7778vw);
   color: #ffffff;
   font-size: min(29px, 2.6852vw);
   font-weight: 600;
@@ -287,7 +312,7 @@ button {
   justify-content: center;
   width: 67.59%;
   height: min(92px, 8.5185vw);
-  margin: min(26px, 2.4074vw) auto 0;
+  margin: min(20px, 1.8519vw) auto 0;
   border: 0;
   border-radius: min(22px, 2.037vw);
   color: #ffffff;
@@ -297,6 +322,57 @@ button {
   font-weight: 800;
   line-height: 1;
   letter-spacing: 0;
+}
+
+.submit-notice {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.32);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.submit-notice[hidden] {
+  display: none;
+}
+
+.submit-notice.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.submit-notice-box {
+  width: min(78vw, 420px);
+  border-radius: 18px;
+  padding: 34px 26px 28px;
+  background: #ffffff;
+  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.24);
+  color: var(--ink);
+  text-align: center;
+}
+
+.submit-notice-title {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.submit-notice-close {
+  min-width: 132px;
+  height: 48px;
+  margin-top: 24px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--green-900);
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
 }
 
 .site-footer {

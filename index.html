@@ -90,6 +90,18 @@
             </div>
           </fieldset>
 
+          <label class="field time-field">
+            <span>연락 가능 시간</span>
+            <select name="contact_time" required>
+              <option value="" selected disabled>연락 가능 시간</option>
+              <option value="오전 10시 - 12시">오전 10시 - 12시</option>
+              <option value="오후 12시 - 2시">오후 12시 - 2시</option>
+              <option value="오후 2시 - 4시">오후 2시 - 4시</option>
+              <option value="오후 4시 - 6시">오후 4시 - 6시</option>
+              <option value="상관없음">상관없음</option>
+            </select>
+          </label>
+
           <label class="agreement">
             <input type="checkbox" name="privacy" required>
             <span>개인정보 수집·이용 동의 <a href="#" aria-label="개인정보 수집 및 이용 동의 보기">[보기]</a></span>
@@ -118,6 +130,13 @@
       </footer>
       <span id="page-bottom" class="page-bottom-anchor" aria-hidden="true"></span>
     </main>
+
+    <div class="submit-notice" role="dialog" aria-modal="true" aria-labelledby="submit-notice-title" hidden>
+      <div class="submit-notice-box">
+        <p id="submit-notice-title" class="submit-notice-title">접수되었습니다.</p>
+        <button type="button" class="submit-notice-close">확인</button>
+      </div>
+    </div>
 
     <script src="./submit-to-google-sheet.js" defer></script>
   </body>

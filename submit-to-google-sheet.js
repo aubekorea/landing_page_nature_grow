@@ -1,6 +1,9 @@
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxcBUMz5MSTKvt-E_if020tdO9PthPbUHdKCP0ZzEPM4ZIAgM8MfyqVQV8jw6idmSTZ/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwohzXMaxwtedKRexU9Xy7GvIOBfKOy-WkiZvVf5CqnW_-SBhfaS2Uj00m5lH4gY1bCSA/exec";
 
 const consultForm = document.querySelector("[data-google-sheet-form]");
+const submitNotice = document.querySelector(".submit-notice");
+const submitNoticeClose = document.querySelector(".submit-notice-close");
+let submitNoticeTimer;
 
 function getPhoneValue(form) {
   const prefix = form.elements["phone-prefix"]?.value.trim() || "010";
@@ -8,6 +11,43 @@ function getPhoneValue(form) {
   const last = form.elements["phone-last"]?.value.trim() || "";
   return [prefix, middle, last].filter(Boolean).join("-");
 }
+
+function showSubmitNotice() {
+  if (!submitNotice) {
+    alert("접수되었습니다.");
+    return;
+  }
+
+  window.clearTimeout(submitNoticeTimer);
+  submitNotice.hidden = false;
+  requestAnimationFrame(() => submitNotice.classList.add("is-visible"));
+  submitNoticeTimer = window.setTimeout(hideSubmitNotice, 2400);
+}
+
+function hideSubmitNotice() {
+  if (!submitNotice) {
+    return;
+  }
+
+  submitNotice.classList.remove("is-visible");
+  window.setTimeout(() => {
+    if (!submitNotice.classList.contains("is-visible")) {
+      submitNotice.hidden = true;
+    }
+  }, 180);
+}
+
+submitNoticeClose?.addEventListener("click", hideSubmitNotice);
+submitNotice?.addEventListener("click", (event) => {
+  if (event.target === submitNotice) {
+    hideSubmitNotice();
+  }
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    hideSubmitNotice();
+  }
+});
 
 if (consultForm) {
   consultForm.addEventListener("submit", async (event) => {
@@ -36,6 +76,7 @@ if (consultForm) {
     formData.delete("phone-prefix");
     formData.delete("phone-middle");
     formData.delete("phone-last");
+    formData.set("contact_time", consultForm.elements.contact_time?.value || "");
     formData.set("privacy", "동의");
     formData.set("page_url", window.location.href);
     formData.set("user_agent", navigator.userAgent);
@@ -51,7 +92,7 @@ if (consultForm) {
         body: formData,
       });
 
-      alert("상담 신청이 접수되었습니다.");
+      showSubmitNotice();
       consultForm.reset();
       consultForm.elements["phone-prefix"].value = "010";
     } catch (error) {
