@@ -23,8 +23,8 @@ if (consultForm) {
       return;
     }
 
-    if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes("여기에_")) {
-      alert("구글 Apps Script Web App URL을 submit-to-google-sheet.js에 입력해주세요.");
+    if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes("여기에_구글")) {
+      alert("submit-to-google-sheet.js에 Google Apps Script Web App URL을 입력해주세요.");
       return;
     }
 
