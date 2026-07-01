@@ -33,6 +33,9 @@ if (consultForm) {
     const formData = new FormData(consultForm);
 
     formData.set("phone", getPhoneValue(consultForm));
+    formData.delete("phone-prefix");
+    formData.delete("phone-middle");
+    formData.delete("phone-last");
     formData.set("privacy", "동의");
     formData.set("page_url", window.location.href);
     formData.set("user_agent", navigator.userAgent);
