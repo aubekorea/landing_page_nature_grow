@@ -37,6 +37,12 @@ function hideSubmitNotice() {
   }, 180);
 }
 
+function trackLeadEvent() {
+  if (typeof fbq === "function") {
+    fbq("track", "Lead");
+  }
+}
+
 submitNoticeClose?.addEventListener("click", hideSubmitNotice);
 submitNotice?.addEventListener("click", (event) => {
   if (event.target === submitNotice) {
@@ -92,6 +98,7 @@ if (consultForm) {
         body: formData,
       });
 
+      trackLeadEvent();
       showSubmitNotice();
       consultForm.reset();
       consultForm.elements["phone-prefix"].value = "010";
