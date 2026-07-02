@@ -1,4 +1,5 @@
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwohzXMaxwtedKRexU9Xy7GvIOBfKOy-WkiZvVf5CqnW_-SBhfaS2Uj00m5lH4gY1bCSA/exec";
+const META_PIXEL_ID = "1422774046363286";
 
 const consultForm = document.querySelector("[data-google-sheet-form]");
 const submitNotice = document.querySelector(".submit-notice");
@@ -38,9 +39,15 @@ function hideSubmitNotice() {
 }
 
 function trackLeadEvent() {
-  if (typeof fbq === "function") {
-    fbq("track", "Lead");
+  if (typeof window.fbq === "function") {
+    window.fbq("track", "Lead", {
+      content_name: "성장 상담 신청",
+    });
+    console.info("Meta Pixel Lead event sent.", META_PIXEL_ID);
+    return;
   }
+
+  console.warn("Meta Pixel fbq is not ready. Lead event was not sent.", META_PIXEL_ID);
 }
 
 submitNoticeClose?.addEventListener("click", hideSubmitNotice);
