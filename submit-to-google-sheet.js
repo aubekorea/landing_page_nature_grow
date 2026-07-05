@@ -1,5 +1,6 @@
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwohzXMaxwtedKRexU9Xy7GvIOBfKOy-WkiZvVf5CqnW_-SBhfaS2Uj00m5lH4gY1bCSA/exec";
 const META_PIXEL_ID = "1422774046363286";
+const META_CONTENT_NAME = "nature_grow_landing";
 
 const consultForm = document.querySelector("[data-google-sheet-form]");
 const submitNotice = document.querySelector(".submit-notice");
@@ -11,6 +12,19 @@ function getPhoneValue(form) {
   const middle = form.elements["phone-middle"]?.value.trim() || "";
   const last = form.elements["phone-last"]?.value.trim() || "";
   return [prefix, middle, last].filter(Boolean).join("-");
+}
+
+function getCookieValue(name) {
+  const cookie = document.cookie
+    .split("; ")
+    .find((row) => row.startsWith(`${name}=`));
+
+  return cookie ? decodeURIComponent(cookie.split("=").slice(1).join("=")) : "";
+}
+
+function createMetaEventId() {
+  const randomPart = Math.random().toString(36).slice(2, 10);
+  return `${META_CONTENT_NAME}.${Date.now()}.${randomPart}`;
 }
 
 function showSubmitNotice() {
@@ -38,10 +52,12 @@ function hideSubmitNotice() {
   }, 180);
 }
 
-function trackLeadEvent() {
+function trackLeadEvent(eventId) {
   if (typeof window.fbq === "function") {
     window.fbq("track", "Lead", {
-      content_name: "성장 상담 신청",
+      content_name: META_CONTENT_NAME,
+    }, {
+      eventID: eventId,
     });
     console.info("Meta Pixel Lead event sent.", META_PIXEL_ID);
     return;
@@ -84,6 +100,7 @@ if (consultForm) {
     const submitButton = consultForm.querySelector("button[type='submit']");
     const originalText = submitButton.textContent;
     const formData = new FormData(consultForm);
+    const metaEventId = createMetaEventId();
 
     formData.set("phone", getPhoneValue(consultForm));
     formData.delete("phone-prefix");
@@ -94,6 +111,10 @@ if (consultForm) {
     formData.set("page_url", window.location.href);
     formData.set("user_agent", navigator.userAgent);
     formData.set("submitted_at_client", new Date().toISOString());
+    formData.set("meta_event_id", metaEventId);
+    formData.set("meta_content_name", META_CONTENT_NAME);
+    formData.set("fbp", getCookieValue("_fbp"));
+    formData.set("fbc", getCookieValue("_fbc"));
 
     submitButton.disabled = true;
     submitButton.textContent = "전송 중입니다";
@@ -105,7 +126,7 @@ if (consultForm) {
         body: formData,
       });
 
-      trackLeadEvent();
+      trackLeadEvent(metaEventId);
       showSubmitNotice();
       consultForm.reset();
       consultForm.elements["phone-prefix"].value = "010";
