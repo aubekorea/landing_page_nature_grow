@@ -1,4 +1,4 @@
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwohzXMaxwtedKRexU9Xy7GvIOBfKOy-WkiZvVf5CqnW_-SBhfaS2Uj00m5lH4gY1bCSA/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzCirTRb0PLRWMAB99iHnDcQN97pGJNW0pfPD9zJoIk9v58ECLxPuJzeY85O-tnzbZvHA/exec";
 const META_PIXEL_ID = "1422774046363286";
 const META_CONTENT_NAME = "nature_grow_landing";
 
